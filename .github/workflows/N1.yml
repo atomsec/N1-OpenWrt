@@ -107,7 +107,7 @@ jobs:
       uses: softprops/action-gh-release@master
       if: ${{ env.PACKAGED_STATUS == 'success' }} && !cancelled()
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
       with:
         tag_name: OpenWrt_${{ env.PACKAGED_OUTPUTDATE }}
         files: ${{ env.PACKAGED_OUTPUTPATH }}/*.img.xz
@@ -121,7 +121,7 @@ jobs:
     - name: Delete old releases
       uses: dev-drprasad/delete-older-releases@master
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
       with:
         keep_latest: 2
         delete_tags : true
